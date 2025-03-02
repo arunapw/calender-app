@@ -1,7 +1,12 @@
 .App {
   text-align: center;
 }
+.ccccol{
 
+  border: 10px;
+  border-color: #282c34;
+  background-color: aquamarine;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
