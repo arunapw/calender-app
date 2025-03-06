@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, {createContext, useContext, useEffect, useRef} from "react";
 import {
     createCalendar,
     createViewDay,
@@ -15,25 +15,17 @@ import {createEventsServicePlugin} from "@schedule-x/events-service";
 import {createCurrentTimePlugin} from "@schedule-x/current-time";
 import {createEventModalPlugin} from "@schedule-x/event-modal";
 import {createResizePlugin} from "@schedule-x/resize";
+import '../styles/Calendar.css'
 
-const CalendarComp = () => {
+const CalendarContext = createContext(null);
+
+// Custom Hook to use CalendarContext
+export const useCalendar = () => useContext(CalendarContext);
+export const CalendarProvider = ({children}) => {
     const initialized = useRef(false);
 
     const calendarRef = useRef(null);
-    const scrollerStyles = theme => ({
-        '@global': {
-            '*::-webkit-scrollbar': {
-                width: '0.4em'
-            },
-            '*::-webkit-scrollbar-track': {
-                '-webkit-box-shadow': 'inset 0 0 6px rgba(0,0,0,0.00)'
-            },
-            '*::-webkit-scrollbar-thumb': {
-                backgroundColor: 'rgba(0,0,0,.1)',
-                outline: '1px solid slategrey'
-            }
-        }
-    });
+
     useEffect(() => {
         if (!initialized.current && calendarRef.current) {
             initialized.current = true;
@@ -63,16 +55,48 @@ const CalendarComp = () => {
                     events: [
                         {
                             id: 1,
-                            title: 'Coffee with John',
-                            start: '2025-03-01 08:05',
-                            end: '2025-03-01 12:30',
+                            title: 'Meeting with peers.',
+                            start: '2025-03-06 09:00',
+                            end: '2025-03-06 10:30',
                         },
                         {
                             id: 2,
-                            title: 'Ski trip',
-                            start: '2025-03-01',
-                            end: '2025-03-01',
+                            title: 'Snr. Java Dev Interview.',
+                            start: '2025-03-06 15:00',
+                            end: '2025-03-06 16:15',
                         },
+                        {
+                            id: 3,
+                            title: 'Evening Scrum',
+                            start: '2025-03-06 17:00',
+                            end: '2025-03-06 17:30',
+                        },
+
+                        {
+                            id: 4,
+                            title: 'Morning Scrum',
+                            start: '2025-03-07 09:00',
+                            end: '2025-03-07 10:30',
+                        },
+                        {
+                            id: 5,
+                            title: 'Developers meeting.',
+                            start: '2025-03-07 14:00',
+                            end: '2025-03-07 15:15',
+                        },
+                        {
+                            id: 6,
+                            title: 'Evening Scrum',
+                            start: '2025-03-06 17:00',
+                            end: '2025-03-06 17:30',
+                        },
+                        {
+                            id: 7,
+                            title: 'Trip',
+                            start: '2025-03-08',
+                            end: '2025-03-08',
+                        }
+
                     ],
                 },
                 [
@@ -88,7 +112,12 @@ const CalendarComp = () => {
         }
     }, []);
 
-    return <div id="calender" ref={calendarRef} style={{scrollerStyles, width: "100%", height: "90vh"}}/>;
+    return (
+        <CalendarContext.Provider value={{calendarRef}}>
+            {children}
+            <div id="calendar" ref={calendarRef} style={{width: "100%", height: "100%"}}/>
+        </CalendarContext.Provider>
+    );
 };
 
-export default CalendarComp;
+export default CalendarProvider;
