@@ -1,4 +1,5 @@
-import React, {createContext, useContext, useEffect, useRef} from "react";
+import React, {createContext, useContext, useEffect, useRef, useState} from "react";
+
 import {
     createCalendar,
     createViewDay,
@@ -21,10 +22,12 @@ const CalendarContext = createContext(null);
 
 // Custom Hook to use CalendarContext
 export const useCalendar = () => useContext(CalendarContext);
+
 export const CalendarProvider = ({children}) => {
     const initialized = useRef(false);
 
     const calendarRef = useRef(null);
+    const [calendarInstance, setCalendarInstance] = useState(null);
 
     useEffect(() => {
         if (!initialized.current && calendarRef.current) {
@@ -56,46 +59,47 @@ export const CalendarProvider = ({children}) => {
                         {
                             id: 1,
                             title: 'Meeting with peers.',
-                            start: '2025-03-06 09:00',
-                            end: '2025-03-06 10:30',
+                            start: '2025-03-12 09:00',
+                            end: '2025-03-12 10:30'
                         },
                         {
                             id: 2,
                             title: 'Snr. Java Dev Interview.',
-                            start: '2025-03-06 15:00',
-                            end: '2025-03-06 16:15',
+                            start: '2025-03-12 15:00',
+                            end: '2025-03-12 16:15'
                         },
                         {
                             id: 3,
                             title: 'Evening Scrum',
-                            start: '2025-03-06 17:00',
-                            end: '2025-03-06 17:30',
+                            start: '2025-03-12 17:00',
+                            end: '2025-03-12 17:30'
                         },
 
                         {
                             id: 4,
                             title: 'Morning Scrum',
-                            start: '2025-03-07 09:00',
-                            end: '2025-03-07 10:30',
+                            start: '2025-03-13 09:00',
+                            end: '2025-03-13 10:30'
                         },
                         {
                             id: 5,
                             title: 'Developers meeting.',
-                            start: '2025-03-07 14:00',
-                            end: '2025-03-07 15:15',
+                            start: '2025-03-13 14:00',
+                            end: '2025-03-13 15:15'
                         },
                         {
                             id: 6,
                             title: 'Evening Scrum',
-                            start: '2025-03-06 17:00',
-                            end: '2025-03-06 17:30',
+                            start: '2025-03-13 17:00',
+                            end: '2025-03-13 17:30'
                         },
                         {
                             id: 7,
-                            title: 'Trip',
-                            start: '2025-03-08',
-                            end: '2025-03-08',
-                        }
+                            title: 'Holi Holiday',
+                            start: '2025-03-14',
+                            end: '2025-03-14',
+                            color: 'red'
+                        },
 
                     ],
                 },
@@ -109,11 +113,12 @@ export const CalendarProvider = ({children}) => {
                     createResizePlugin(),
                 ])
             calendar.render(calendarRef.current);
+            setCalendarInstance(calendar); // Store the instance in state
         }
     }, []);
 
     return (
-        <CalendarContext.Provider value={{calendarRef}}>
+        <CalendarContext.Provider value={{calendarRef, calendarInstance}}>
             {children}
             <div id="calendar" ref={calendarRef} style={{width: "100%", height: "100%"}}/>
         </CalendarContext.Provider>

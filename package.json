@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@coreui/icons": "latest",
+    "@coreui/icons-react": "latest",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/material": "^6.4.7",
     "@schedule-x/calendar-controls": "^2.21.0",
     "@schedule-x/current-time": "^2.21.0",
     "@schedule-x/drag-and-drop": "^2.21.0",
@@ -17,12 +22,13 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "@testing-library/user-event": "^13.5.0",
-    "lucide-react": "latest",
+    "axios": "latest",
+    "lucide-react": "^0.477.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-router-dom": "^7.3.0",
     "react-scripts": "5.0.1",
-    "@coreui/icons": "latest",
-    "@coreui/icons-react": "latest",
+    "react-time-picker": "^7.0.0",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -50,6 +56,7 @@
     ]
   },
   "devDependencies": {
-    "@coreui/react": "^5.5.0"
+    "@coreui/react": "^5.5.0",
+    "react-datepicker": "^8.2.0"
   }
 }

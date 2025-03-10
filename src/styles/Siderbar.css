@@ -8,8 +8,22 @@
 .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
     /*max-width: 1320px;*/
     max-width: 100% !important;
+    width: 100% !important;
 }
 
+.add-event {
+    padding: 20px;
+}
+
+CForm {
+    margin: 40px;
+}
+
+.close-button {
+    position: center;
+    margin-left: 140px;
+    background-color: #59da59;
+}
 
 /*.list-group*/
 /*{*/
@@ -26,11 +40,48 @@
     /*}*/
 }
 
+/*.Event-Button{*/
+/*    navbutton_background_color: navy;*/
+/*    margin-top: 50px;*/
+/*    border-bottom-right-radius: 20px;*/
+/*    border-top-right-radius: 20px;*/
+/*    border-top-left-radius: 20px;*/
+/*    border-bottom-left-radius: 20px;*/
+/*}*/
 @media (min-width: 992px) {
     /*.container, .container-lg, .container-md, .container-sm {*/
     /*    max-width: 960px;*/
     /*    !*max-width: 100% !important;*!*/
     /*}*/
+}
+
+/* Custom CSS */
+@keyframes button {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+
+.button {
+    animation: blink 1s infinite;
+
+    margin-top: 60px;
+    background-color: #4a4ac7;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.button.active {
+    background-color: green;
 }
 
 @media (min-width: 768px) {
