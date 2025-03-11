@@ -12,8 +12,8 @@ export const Navbar = () => {
                     <CIcon customClassName="nav-icon" height="30px" width="30px"
                            icon={cilCalendar}/> Calendar</CNavbarBrand>
                 <CForm className="d-flex">
-                    <img src="https://www.cybaemtech.com/img/pvtlogo.webp" alt="Cybaem Tech Pvt. Ltd."
-                         aria-hidden="true" class="size-5" height="35px" width="80px"/>
+                    {/*<img src="https://www.cybaemtech.com/img/pvtlogo.webp" alt="Cybaem Tech Pvt. Ltd."*/}
+                    {/*     aria-hidden="true" class="size-5" height="35px" width="80px"/>*/}
                 </CForm>
             </CContainer>
         </CNavbar>

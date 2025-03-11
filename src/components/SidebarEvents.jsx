@@ -10,8 +10,7 @@ import {
     CModalHeader,
     CModalTitle
 } from '@coreui/react'
-import TimePicker from 'react-time-picker';
-import 'react-time-picker/dist/TimePicker.css';
+
 import 'react-clock/dist/Clock.css';
 import axios from 'axios';
 import './../styles/Siderbar.css'
